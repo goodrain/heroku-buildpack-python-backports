@@ -1,6 +1,6 @@
 # Heroku buildpack for Python![Build Status](https://travis-ci.org/heroku/heroku-buildpack-python.svg?branch=master)
 
-云帮 Python 语言项目的源码构建核心部分是基于[Heroku buildpack for Python](http://devcenter.heroku.com/articles/buildpack) 来实现的。支持使用`Django`或`Flask`等框架。
+云帮 Python 语言项目的源码构建核心部分是基于[Heroku buildpack for Python](https://github.com/heroku/heroku-buildpack-python) 来实现的。支持使用`Django`或`Flask`等框架。
 
 ## 工作原理
 
@@ -30,4 +30,4 @@ python-3.4.3
 
 ## 授权
 
-根据 MIT 授权证获得许可。 请参阅LICENSE文件
+根据 MIT 授权获得许可。 请参阅LICENSE文件
