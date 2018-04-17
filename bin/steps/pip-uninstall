@@ -1,11 +1,10 @@
-set +e
 # Install dependencies with Pip.
 
 if [[ -f .heroku/python/requirements-declared.txt ]]; then
 
   cp .heroku/python/requirements-declared.txt requirements-declared.txt
 
-  pip-diff --stale requirements-declared.txt requirements.txt --exclude setuptools pip wheel > .heroku/python/requirements-stale.txt
+  diff  requirements-declared.txt requirements.txt | grep -v -E  'setuptools|pip|wheel' | sed 1d | sed 's/> //' > .heroku/python/requirements-stale.txt
 
   rm -fr requirements-declared.txt
 
@@ -14,5 +13,3 @@ if [[ -f .heroku/python/requirements-declared.txt ]]; then
     /app/.heroku/python/bin/pip uninstall -r .heroku/python/requirements-stale.txt -y --exists-action=w | cleanup | indent
   fi
 fi
-
-set -e
