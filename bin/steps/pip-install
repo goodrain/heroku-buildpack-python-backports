@@ -14,8 +14,8 @@ if [ ! "$SKIP_PIP_INSTALL" ]; then
         export PIP_EXTRA_INDEX_URL
     fi
 
-    RUN_PIP_INDEX_URL="-i ${PIP_INDEX_URL:-https://pypi.org/simple}"
-    echo "pypi mirrors $RUN_PIP_INDEX_URL"
+    RUN_PIP_INDEX_URL="${PIP_INDEX_URL:-https://pypi.org/simple}"
+    echo "pypi mirrors: $RUN_PIP_INDEX_URL"
 
     set +e
 
