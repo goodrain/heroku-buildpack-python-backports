@@ -12,11 +12,11 @@ if [ ! "$SKIP_PIP_INSTALL" ]; then
     if [[ -r $ENV_DIR/PIP_EXTRA_INDEX_URL ]]; then
         PIP_EXTRA_INDEX_URL="$(cat "$ENV_DIR/PIP_EXTRA_INDEX_URL")"
         export PIP_EXTRA_INDEX_URL
-    else
-       PIP_EXTRA_INDEX_URL=${PIP_INDEX_URL:-https://pypi.tuna.tsinghua.edu.cn/simple}
-       export PIP_EXTRA_INDEX_URL
     fi
-    echo $PIP_EXTRA_INDEX_URL
+
+    RUN_PIP_INDEX_URL="-i ${PIP_INDEX_URL:-https://pypi.org/simple}"
+    echo "pypi mirrors $RUN_PIP_INDEX_URL"
+
     set +e
 
     # Measure that we're using pip.
@@ -27,7 +27,7 @@ if [ ! "$SKIP_PIP_INSTALL" ]; then
         mcount "failure.none-version"
     fi
 
-    /app/.heroku/python/bin/pip install  -r "$BUILD_DIR/requirements.txt" --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
+    /app/.heroku/python/bin/pip install -i "$RUN_PIP_INDEX_URL"  -r "$BUILD_DIR/requirements.txt" --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
     PIP_STATUS="${PIPESTATUS[0]}"
     set -e
 
