@@ -23,6 +23,14 @@
 - `Python-3.6.6`
 - `Python-3.7.0`
 
+### 支持自定义Pypi镜像地址(https)
+
+构建应用时配置环境变量
+
+```bash
+BUILD_PIP_INDEX_URL https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
 ## 授权
 
 根据 MIT 授权获得许可。 请参阅LICENSE文件
