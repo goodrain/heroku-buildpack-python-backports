@@ -1,4 +1,4 @@
-# Heroku buildpack for Python![Build Status](https://travis-ci.org/heroku/heroku-buildpack-python.svg?branch=master)
+# Heroku buildpack for Python![Build Status](https://travis-ci.org/goodrain/heroku-buildpack-python.svg?branch=v3.7)
 
 云帮 Python 语言项目的源码构建核心部分是基于[Heroku buildpack for Python](https://github.com/heroku/heroku-buildpack-python) 来实现的。支持使用`Django`或`Flask`等框架。
 
@@ -10,23 +10,26 @@
 
 以下文章了解更多：
 
-- [云帮支持Python](http://www.rainbond.com/docs/stable/user-lang-docs/python/lang-python-overview.html#build)
+- [云帮支持Python](https://www.rainbond.com/docs/stable/user-manual/language-support/python.html)
 
 
 ## 配置
 
-### 指定一个Python版本
-
-新创建的 Python 应用默认使用 2.7.13 版本，您也可以在根目录下创建一个 `runtime.txt`文件来指定版本：
-
-```
-cat runtime.txt
-python-3.4.3
-```
-
 ### 推荐使用的Python版本
 
-`Python-2.7.9`~`Python-2.7.13`、`Python-3.4.3`、`Python-3.5.2`、`Python-3.6.0`、`Python-3.6.1`
+ 通过`runtime.txt`文件来指定Python版本:
+ 
+- `Python-2.7.15`
+- `Python-3.6.6`
+- `Python-3.7.0`
+
+### 支持自定义Pypi镜像地址(https)
+
+构建应用时配置环境变量
+
+```bash
+BUILD_PIP_INDEX_URL https://pypi.tuna.tsinghua.edu.cn/simple
+```
 
 ## 授权
 
